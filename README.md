@@ -13,12 +13,12 @@ Ele então exibe uma lista de todos os arquivos que serão excluídos (conhecido
 ## Como usar
 Primeiro, compile o programa usando o `gcc`. Depois, basta executá-lo na pasta do seu projeto LaTeX.
 
-# 1. Compile o código-fonte
+1. Compile o código-fonte
 ```bash
 gcc -o limpatex limpatex.c
 ```
 
-# 2. Execute o programa
+2. Execute o programa
 ```bash
 ./limpatex
 ```
@@ -37,19 +37,19 @@ mv limpatex ~/.local/bin/
 ```
 
 2. Crie o Alias (Atalho)
-# Para usuarios Bash:
-    1. Abra o arquivo ~/.bashrc com seu editor de texto e adicione o comando
-    2. Adicione a seguinte linha
-    ```bash
-    alias limpatex='~/.local/bin/limpatex'
-    ```
+Para usuarios Bash:
+  1. Abra o arquivo ~/.bashrc com seu editor de texto e adicione o comando
+  2. Adicione a seguinte linha
+  ```bash
+  alias limpatex='~/.local/bin/limpatex'
+  ```
 
-# Para usuarios Zsh:
-    1. Abra o arquivo ~/.zshrc com seu editor de texto e adicione o comando
-    2. Adicione a seguinte linha
-    ```bash
-    alias limpatex='~/.local/bin/limpatex'
-    ```
+Para usuarios Zsh:
+  1. Abra o arquivo ~/.zshrc com seu editor de texto e adicione o comando
+  2. Adicione a seguinte linha
+  ```bash
+  alias limpatex='~/.local/bin/limpatex'
+  ```
 
 3. Após salvar o arquivo, recarregue as configurações do seu terminal.
 ```bash
