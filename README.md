@@ -1,7 +1,7 @@
 ## Como funciona
 O programa, escrito em **C**, escaneia o diretório atual em busca de arquivos. Ele classifica os arquivos em três categorias:
 
-1.  **Arquivos a serem mantidos:** `.tex`, `.pdf` e o próprio `limpatex`.
+1.  **Arquivos a serem mantidos:** `.tex` e `.pdf`.
 2.  **Arquivos de lixo conhecidos:** Extensões comuns geradas pelo LaTeX, como `.log`, `.aux`, `.toc`, etc.
 3.  **Arquivos desconhecidos:** Qualquer outro tipo de arquivo que não se encaixe nas categorias acima.
 
