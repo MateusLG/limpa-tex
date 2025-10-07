@@ -1,109 +1,61 @@
-🧹 limpa-tex
-Um utilitário de linha de comando, escrito em C, para limpar e organizar diretórios de projetos LaTeX de forma rápida e segura.
+## limpa-tex
+Um utilitário de linha de comando em C para limpar e organizar diretórios de projetos LaTeX.
 
-Sobre o Projeto
-Este projeto nasceu de uma simples agonia: a bagunça de arquivos auxiliares (.aux, .log, .toc, etc.) que poluem a pasta de um projeto toda vez que um arquivo .tex é compilado.
+## Como funciona
+O programa, escrito em **C**, escaneia o diretório atual em busca de arquivos. Ele classifica os arquivos em três categorias:
 
-Alternativas como o comando :Cleantex em editores como o Neovim são funcionais, mas muitas vezes exigem mais configuração ou passos do que o desejado. A ideia do limpa-tex é ser uma solução de um único comando, executado diretamente no terminal, que limpa o desnecessário e organiza o essencial.
+1.  **Arquivos a serem mantidos:** `.tex`, `.pdf` e o próprio `limpatex`.
+2.  **Arquivos de lixo conhecidos:** Extensões comuns geradas pelo LaTeX, como `.log`, `.aux`, `.toc`, etc.
+3.  **Arquivos desconhecidos:** Qualquer outro tipo de arquivo que não se encaixe nas categorias acima.
 
-✅ Funcionalidades
-Exclusão Inteligente: Remove apenas os arquivos auxiliares gerados pelo LaTeX, preservando seus arquivos .tex e .pdf.
+Ele então exibe uma lista de todos os arquivos que serão excluídos (conhecidos e desconhecidos) e **pede sua confirmação**. Se você concordar, ele remove os arquivos e, por fim, move todos os `.tex` para uma pasta chamada `Arquivos LaTeX`.
 
-Segurança: Antes de apagar qualquer coisa, o script exibe uma lista de arquivos que serão removidos e pede sua confirmação. Um aviso especial é emitido para arquivos de tipo desconhecido, evitando a exclusão acidental de algo importante.
+## Como usar
+Primeiro, compile o programa usando o `gcc`. Depois, basta executá-lo na pasta do seu projeto LaTeX.
 
-Organização: Após a limpeza, move todos os seus arquivos .tex para um subdiretório chamado Arquivos LaTeX, deixando o diretório principal limpo.
-
-Autoproteção: O script é programado para não excluir a si mesmo (o executável limpatex e o código-fonte limpatex.c).
-
-⚙️ Instalação e Configuração
-Para usar o limpa-tex como um comando em qualquer diretório, siga estes passos:
-
-Pré-requisitos
-Você precisa ter um compilador C, como o gcc, instalado. Na maioria das distribuições Linux, ele pode ser instalado com o gerenciador de pacotes (ex: sudo apt install build-essential no Debian/Ubuntu ou sudo pacman -S base-devel no Arch Linux).
-
-Passo 1: Compilar o Código
-Navegue até a pasta do projeto e execute o seguinte comando para compilar o programa:
-
-Bash
-
+# 1. Compile o código-fonte
+```bash
 gcc -o limpatex limpatex.c
-Isso criará um arquivo executável chamado limpatex.
+```
 
-Passo 2: Tornar o Comando Acessível
-Para poder executar limpatex de qualquer lugar, mova o executável para um diretório que esteja no PATH do seu sistema. Uma boa prática é usar ~/.local/bin.
+# 2. Execute o programa
+```bash
+./limpatex
+```
 
-Bash
+## Dicas
+Para usar o limpatex como um comando global em seu terminal, você pode movê-lo para um diretório de binários e criar um alias.
 
-# Cria o diretório se ele não existir
+1. Mova o executável:
+É uma boa prática mover o arquivo compilado para ~/.local/bin, uma pasta que geralmente já está no PATH do sistema.
+
+```bash
+# Cria o diretorio se ele não existir
 mkdir -p ~/.local/bin
-
-# Move o executável para lá
+# Move o executavel para lá
 mv limpatex ~/.local/bin/
-Passo 3: Criar um Alias (Atalho)
-Para finalizar, adicione um alias ao arquivo de configuração do seu shell.
+```
 
-Para usuários Bash:
+2. Crie o Alias (Atalho)
+# Para usuarios Bash:
+    1. Abra o arquivo ~/.bashrc com seu editor de texto e adicione o comando
+    2. Adicione a seguinte linha
+    ```bash
+    alias limpatex='~/.local/bin/limpatex'
+    ```
 
-Abra o arquivo ~/.bashrc com seu editor de texto (ex: nano ~/.bashrc).
+# Para usuarios Zsh:
+    1. Abra o arquivo ~/.zshrc com seu editor de texto e adicione o comando
+    2. Adicione a seguinte linha
+    ```bash
+    alias limpatex='~/.local/bin/limpatex'
+    ```
 
-Adicione a seguinte linha ao final do arquivo:
-
-Bash
-
-alias limpatex='~/.local/bin/limpatex'
-Para usuários Zsh:
-
-Abra o arquivo ~/.zshrc com seu editor de texto (ex: nano ~/.zshrc).
-
-Adicione a seguinte linha ao final do arquivo:
-
-Bash
-
-alias limpatex='~/.local/bin/limpatex'
-Após salvar o arquivo, recarregue a configuração do seu terminal:
-
-Bash
-
+3. Após salvar o arquivo, recarregue as configurações do seu terminal.
+```bash
 # Para Bash
 source ~/.bashrc
 
 # Ou para Zsh
 source ~/.zshrc
-▶️ Como Usar
-Com a instalação concluída, o uso é muito simples.
-
-Abra seu terminal.
-
-Navegue até o diretório do seu projeto LaTeX que você deseja limpar.
-
-Execute o comando:
-
-Bash
-
-limpatex
-O programa irá analisar a pasta, mostrar os arquivos que serão removidos e pedir sua confirmação. Digite y para prosseguir.
-
-Exemplo de Saída
-$ limpatex
-Os seguintes arquivos serão EXCLUÍDOS:
-----------------------------------------
-Arquivos auxiliares do LaTeX:
-  - relatorio.aux
-  - relatorio.log
-  - relatorio.toc
-----------------------------------------
-!! ATENÇÃO: Arquivos DESCONHECIDOS !!
-  - notas.txt
-----------------------------------------
-Deseja continuar? (y/n): y
-
-Iniciando limpeza...
-  [DELETADO] relatorio.aux
-  [DELETADO] relatorio.log
-  [DELETADO] relatorio.toc
-  [DELETADO] notas.txt
-
-Movendo arquivos .tex...
-  [MOVIDO] relatorio.tex
-
-Limpeza concluída!
+```
