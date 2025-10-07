@@ -38,15 +38,15 @@ mv limpatex ~/.local/bin/
 
 2. Crie o Alias (Atalho)
 Para usuarios Bash:
-1. Abra o arquivo ~/.bashrc com seu editor de texto e adicione o comando
-2. Adicione a seguinte linha
+Abra o arquivo ~/.bashrc com seu editor de texto e adicione o comando
+Adicione a seguinte linha
 ```bash
 alias limpatex='~/.local/bin/limpatex'
 ```
 
 Para usuarios Zsh:
-1. Abra o arquivo ~/.zshrc com seu editor de texto e adicione o comando
-2. Adicione a seguinte linha
+Abra o arquivo ~/.zshrc com seu editor de texto e adicione o comando
+Adicione a seguinte linha
 ```bash
 alias limpatex='~/.local/bin/limpatex'
 ```
