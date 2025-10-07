@@ -1,6 +1,3 @@
-## limpa-tex
-Um utilitário de linha de comando em C para limpar e organizar diretórios de projetos LaTeX.
-
 ## Como funciona
 O programa, escrito em **C**, escaneia o diretório atual em busca de arquivos. Ele classifica os arquivos em três categorias:
 
